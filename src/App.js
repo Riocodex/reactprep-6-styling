@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  const [colour, setColour] = useState("");
+
+  const getInputs = (event) => {
+    const { name, value } = event.target;
+    setColour(value);
+  };
+
+  const styles = {
+    internal: {
+      color: colour,
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{ color: "green", backgroundColor: "black" }}>Change colour</h1>
+      <h1 style={styles.internal}>Rio</h1>
+      <input
+        type="text"
+        placeholder="Type the color you want Rio to be"
+        name="colour"
+        onChange={getInputs}
+      />
     </div>
   );
 }
